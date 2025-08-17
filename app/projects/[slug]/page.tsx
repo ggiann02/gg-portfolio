@@ -57,6 +57,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <p className="font-ibm text-xl text-neutral-600 leading-relaxed">{project.description}</p>
         </div>
 
+        {project.id === "birba-and-the-fly" && (
+          <div className="mb-12">
+            <h2 className="font-martian text-2xl font-bold text-black mb-6">Read the Book</h2>
+            <div className="relative w-full h-[800px] border border-neutral-200 bg-white overflow-hidden">
+              <iframe src="/birba-and-the-fly.pdf" className="w-full h-full" title="Birba and the Fly Book" />
+            </div>
+          </div>
+        )}
+
         {/* Project Video (if available) */}
         {project.videoUrl && (
           <div className="mb-12">
