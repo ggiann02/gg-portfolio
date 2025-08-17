@@ -60,8 +60,96 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         {project.id === "birba-and-the-fly" && (
           <div className="mb-12">
             <h2 className="font-martian text-2xl font-bold text-black mb-6">Read the Book</h2>
-            <div className="relative w-full h-[800px] border border-neutral-200 bg-white overflow-hidden">
-              <iframe src="/birba-and-the-fly.pdf" className="w-full h-full" title="Birba and the Fly Book" />
+            <div className="relative w-full max-h-[800px] border border-neutral-200 bg-white overflow-y-auto p-8">
+              <div className="max-w-2xl mx-auto space-y-12 font-ibm">
+                {/* Title Page */}
+                <div className="text-center py-16">
+                  <h1 className="font-martian text-4xl font-bold mb-4">BIRBA & THE FLY</h1>
+                  <p className="text-lg text-neutral-600">by Giorgia Giannico</p>
+                </div>
+
+                {/* Story Pages */}
+                <div className="space-y-8">
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">
+                      A few minutes after Birba was born, she heard an unfamiliar buzzing sound
+                    </p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">
+                      And she discovered it came from a rather peculiar black creature
+                    </p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">"Hi, I'm a fly" said the creature</p>
+                    <p className="text-lg leading-relaxed mt-4">The fly went bzzz and zzuuu and zzii and zzaaa</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">The fly buzzed and buzzed around Birba</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">When suddenly she got an idea...</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-2xl font-bold text-center">THE FLY LOOKED REALLY TASTY!</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">so she crawled and jumped</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">and leapt and flew...</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">... and fell.</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">The fly was far too smart for Birba to keep up.</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">"That's it. I'm over it." Said Birba</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">
+                      One summer afternoon, while Birba was napping in the golden warmth of the sun,
+                    </p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">a familiar pair of wings rested on her nose.</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">and in one swift movement ...</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-2xl font-bold text-center">SHE SLURPED THE FLY UP!</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">"That was easy! I can finally rest now." Thought Birba</p>
+                  </div>
+
+                  <div className="py-8 border-b border-neutral-100">
+                    <p className="text-lg leading-relaxed">So she fell into a deep, deep slumber</p>
+                  </div>
+
+                  <div className="py-8">
+                    <p className="text-lg leading-relaxed text-center">The deepest slumber of them all.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
