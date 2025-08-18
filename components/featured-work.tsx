@@ -24,7 +24,7 @@ export function FeaturedWork() {
     {
       id: 3,
       title: "BIRBA AND THE FLY",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/b1.png",
       slug: "birba-and-the-fly",
     },
     {

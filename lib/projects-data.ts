@@ -58,13 +58,7 @@ export const projectsData: Project[] = [
     description: "A charming children's book about a character named Birba and her encounter with a fly.",
     longDescription:
       "Birba and the Fly is a delightful children's book that tells the story of Birba's encounter with a buzzing fly. The narrative follows Birba's attempts to catch the clever fly, her eventual frustration, and the surprising conclusion when the fly finally lands on her nose while she sleeps. The book combines simple storytelling with engaging illustrations to create an entertaining tale for young readers.",
-    image: "/placeholder.svg?height=400&width=600",
-    galleryImages: [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-    ],
+    image: "/images/b1.png",
     skills: ["Children's Book Design", "Storytelling", "Illustration", "Layout Design", "Typography"],
     year: "2024",
     status: "completed",

@@ -4,6 +4,7 @@ import Image from "next/image"
 import { ArrowLeft, ArrowRight, Calendar, Tag } from "lucide-react"
 import { getProjectBySlug, getNextProject, getPreviousProject } from "@/lib/projects-data"
 import ImageCarousel from "@/components/image-carousel"
+import { ClientOnly } from "@/components/client-only"
 
 interface ProjectPageProps {
   params: {
@@ -57,98 +58,41 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <p className="font-ibm text-xl text-neutral-600 leading-relaxed">{project.description}</p>
         </div>
 
-        {project.id === "birba-and-the-fly" && (
+                {/* Read the book section for Birba project */}
+        {project.id === 'birba-and-the-fly' && (
           <div className="mb-12">
-            <h2 className="font-martian text-2xl font-bold text-black mb-6">Read the Book</h2>
-            <div className="relative w-full max-h-[800px] border border-neutral-200 bg-white overflow-y-auto p-8">
-              <div className="max-w-2xl mx-auto space-y-12 font-ibm">
-                {/* Title Page */}
-                <div className="text-center py-16">
-                  <h1 className="font-martian text-4xl font-bold mb-4">BIRBA & THE FLY</h1>
-                  <p className="text-lg text-neutral-600">by Giorgia Giannico</p>
-                </div>
-
-                {/* Story Pages */}
-                <div className="space-y-8">
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">
-                      A few minutes after Birba was born, she heard an unfamiliar buzzing sound
-                    </p>
+            <div className="bg-transparent rounded-lg overflow-hidden">
+              <h2 className="font-martian text-2xl font-bold text-black mb-8 text-center">Read the Book</h2>
+              
+              <div className="w-full -mx-4 px-4">
+                <ClientOnly fallback={
+                  <div className="w-full h-[800px] bg-neutral-100 rounded-lg flex items-center justify-center">
+                    <div className="text-neutral-500 text-sm">Loading PDF...</div>
                   </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">
-                      And she discovered it came from a rather peculiar black creature
-                    </p>
+                }>
+                  <div className="space-y-4">
+                    <iframe 
+                      src="/BirbaAndTheFly.pdf"
+                      className="w-full h-[800px] border-0 rounded-lg shadow-lg"
+                      title="Birba and the Fly - PDF Book"
+                    />
+                    <div className="text-center">
+                      <a 
+                        href="/BirbaAndTheFly.pdf" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-ibm text-sm"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                          <polyline points="7,10 12,15 17,10"/>
+                          <line x1="12" x2="12" y1="15" y2="3"/>
+                        </svg>
+                        Download PDF
+                      </a>
+                    </div>
                   </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">"Hi, I'm a fly" said the creature</p>
-                    <p className="text-lg leading-relaxed mt-4">The fly went bzzz and zzuuu and zzii and zzaaa</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">The fly buzzed and buzzed around Birba</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">When suddenly she got an idea...</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-2xl font-bold text-center">THE FLY LOOKED REALLY TASTY!</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">so she crawled and jumped</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">and leapt and flew...</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">... and fell.</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">The fly was far too smart for Birba to keep up.</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">"That's it. I'm over it." Said Birba</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">
-                      One summer afternoon, while Birba was napping in the golden warmth of the sun,
-                    </p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">a familiar pair of wings rested on her nose.</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">and in one swift movement ...</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-2xl font-bold text-center">SHE SLURPED THE FLY UP!</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">"That was easy! I can finally rest now." Thought Birba</p>
-                  </div>
-
-                  <div className="py-8 border-b border-neutral-100">
-                    <p className="text-lg leading-relaxed">So she fell into a deep, deep slumber</p>
-                  </div>
-
-                  <div className="py-8">
-                    <p className="text-lg leading-relaxed text-center">The deepest slumber of them all.</p>
-                  </div>
-                </div>
+                </ClientOnly>
               </div>
             </div>
           </div>
@@ -159,9 +103,31 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="mb-12">
             <h2 className="font-martian text-2xl font-bold text-black mb-6">Project Demo</h2>
             <div className="relative aspect-video w-full overflow-hidden bg-neutral-100">
-              <video src={project.videoUrl} controls className="w-full h-full object-cover" poster={project.image}>
-                Your browser does not support the video tag.
-              </video>
+              {project.videoUrl.includes('drive.google.com') ? (
+                <ClientOnly fallback={
+                  <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
+                    <div className="text-neutral-500 text-sm">Loading video...</div>
+                  </div>
+                }>
+                  <iframe
+                    src={project.videoUrl}
+                    className="w-full h-full"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    title={`${project.title} Demo`}
+                  />
+                </ClientOnly>
+              ) : (
+                <ClientOnly fallback={
+                  <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
+                    <div className="text-neutral-500 text-sm">Loading video...</div>
+                  </div>
+                }>
+                  <video src={project.videoUrl} controls className="w-full h-full object-cover" poster={project.image}>
+                    Your browser does not support the video tag.
+                  </video>
+                </ClientOnly>
+              )}
             </div>
           </div>
         )}

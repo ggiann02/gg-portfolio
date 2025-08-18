@@ -5,13 +5,16 @@ import { Canvas } from "@react-three/fiber"
 import { OrbitControls, useGLTF } from "@react-three/drei"
 import { Suspense, useEffect, useState } from "react"
 import Link from "next/link"
+import { ClientOnly } from "./client-only"
 
 function Room() {
-  const { scene } = useGLTF("/room.glb")
+  const { scene } = useGLTF("/gioRoomLight.glb")
   const [scale, setScale] = useState(1.5)
 
   useEffect(() => {
     const updateScale = () => {
+      if (typeof window === 'undefined') return
+      
       if (window.innerWidth < 640) {
         setScale(0.8)
       } else if (window.innerWidth < 1024) {
@@ -26,7 +29,7 @@ function Room() {
     return () => window.removeEventListener("resize", updateScale)
   }, [])
 
-  return <primitive object={scene} scale={scale} position={[0, -0.5, 0]} />
+  return <primitive object={scene} scale={scale} position={[0, -0.5, 0]} rotation={[0, Math.PI / 9, 0]} />
 }
 
 export function HeroSection() {
@@ -61,14 +64,26 @@ export function HeroSection() {
         </div>
 
         <div className="flex-1 max-w-2xl h-64 sm:h-80 md:h-96 lg:h-[500px]">
-          <Canvas camera={{ position: [3, 2, 3], fov: 50 }}>
-            <Suspense fallback={null}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[5, 5, 5]} intensity={0.2} />
-              <Room />
-              <OrbitControls enablePan={false} enableZoom={false} autoRotate autoRotateSpeed={0.3} />
-            </Suspense>
-          </Canvas>
+          <ClientOnly fallback={
+            <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
+              <div className="text-neutral-500 text-sm">Loading 3D Room...</div>
+            </div>
+          }>
+            <Canvas camera={{ position: [3, 2, 3], fov: 50 }}>
+              <Suspense fallback={null}>
+                <ambientLight intensity={0.6} />
+                <hemisphereLight color="#ffffff" groundColor="#404040" intensity={0.5} />
+                <directionalLight position={[5, 5, 5]} intensity={0.4} />
+                <directionalLight position={[-5, 3, -5]} intensity={0.2} />
+                <directionalLight position={[0, 8, 0]} intensity={0.3} />
+                <pointLight position={[2, 3, 2]} intensity={0.3} />
+                <pointLight position={[-2, 2, -2]} intensity={0.2} />
+                <pointLight position={[0, 5, 0]} intensity={0.4} />
+                <Room />
+                <OrbitControls enablePan={false} enableZoom={false} autoRotate autoRotateSpeed={0.3} />
+              </Suspense>
+            </Canvas>
+          </ClientOnly>
         </div>
       </div>
 
