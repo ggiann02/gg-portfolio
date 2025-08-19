@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "Giorgia Giannico - Portfolio",
   description: "UI/UX Designer crafting beautiful and functional digital experiences",
   generator: "v0.app",
+  icons: {
+    icon: "/images/logo-white.png",
+    shortcut: "/images/logo-white.png",
+    apple: "/images/logo-white.png",
+  },
 }
 
 export default function RootLayout({
