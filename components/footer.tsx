@@ -13,8 +13,7 @@ export function Footer({ name }: { name: string }) {
           </div>
 
           <p className="text-gray-600 leading-relaxed" style={{ fontFamily: "var(--font-ibm-plex-sans)" }}>
-            UI/UX Designer crafting beautiful and functional digital experiences. Let's work together to bring your
-            ideas to life.
+            Creative Technologist crafting beautiful and functional digital experiences.
           </p>
 
           <div className="flex items-center gap-4">

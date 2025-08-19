@@ -56,46 +56,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
       {/* Project Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-                {/* Read the book section for Birba project */}
-        {project.id === 'birba-and-the-fly' && (
-          <div className="mb-12">
-            <div className="bg-transparent rounded-lg overflow-hidden">
-              <h2 className="font-martian text-2xl font-bold text-black mb-8 text-center">Read the Book</h2>
-              
-              <div className="w-full -mx-4 px-4">
-                <ClientOnly fallback={
-                  <div className="w-full h-[800px] bg-neutral-100 flex items-center justify-center">
-                    <div className="text-neutral-500 text-sm">Loading PDF...</div>
-                  </div>
-                }>
-                  <div className="space-y-4">
-                    <iframe 
-                      src="/BirbaAndTheFly.pdf"
-                      className="w-full h-[800px] border-0 shadow-lg"
-                      title="Birba and the Fly - PDF Book"
-                    />
-                    <div className="text-center">
-                      <a 
-                        href="/BirbaAndTheFly.pdf" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-ibm text-sm"
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                          <polyline points="7,10 12,15 17,10"/>
-                          <line x1="12" x2="12" y1="15" y2="3"/>
-                        </svg>
-                        Download PDF
-                      </a>
-                    </div>
-                  </div>
-                </ClientOnly>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Live Demo */}
         {project.liveUrl && (
           <div className="mb-12">
