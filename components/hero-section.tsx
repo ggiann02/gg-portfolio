@@ -10,29 +10,52 @@ import { ClientOnly } from "./client-only"
 function Room() {
   const { scene } = useGLTF("/gioRoomLight.glb")
   const [scale, setScale] = useState(1.5)
+  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     const updateScale = () => {
       if (typeof window === 'undefined') return
       
       if (window.innerWidth < 640) {
-        setScale(1.2)
+        setScale(1.9)
       } else if (window.innerWidth < 1024) {
-        setScale(1.5)
+        setScale(1.1)
       } else {
         setScale(1.5)
       }
     }
 
+    // Create intersection observer to pause rendering when not visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    )
+
+    const heroSection = document.querySelector('.hero-3d-container')
+    if (heroSection) {
+      observer.observe(heroSection)
+    }
+
     updateScale()
     window.addEventListener("resize", updateScale)
-    return () => window.removeEventListener("resize", updateScale)
+    
+    return () => {
+      window.removeEventListener("resize", updateScale)
+      observer.disconnect()
+    }
   }, [])
+
+  // Don't render the 3D model if not visible to save resources
+  if (!isVisible) return null
 
   return <primitive object={scene} scale={scale} position={[0, -0.5, 0]} rotation={[0, Math.PI / 9, 0]} />
 }
 
 export function HeroSection() {
+  const [isHeroVisible, setIsHeroVisible] = useState(true)
+
   const scrollToNextSection = () => {
     const nextSection = document.querySelector("#featured-work")
     if (nextSection) {
@@ -40,8 +63,25 @@ export function HeroSection() {
     }
   }
 
+  useEffect(() => {
+    // Monitor hero section visibility to optimize 3D performance
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+
+    const heroElement = document.querySelector('.hero-section')
+    if (heroElement) {
+      observer.observe(heroElement)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="px-6 py-16 md:px-12 md:py-24">
+    <section className="px-6 py-16 md:px-12 md:py-24 hero-section">
       <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-16">
         <div className="flex-1 space-y-8 text-center lg:text-left">
           <h1
@@ -65,13 +105,24 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="w-full lg:flex-1 max-w-2xl h-[600px] sm:h-96 md:h-96 lg:h-[500px]">
+        <div className="w-full lg:flex-1 max-w-2xl h-[600px] sm:h-96 md:h-96 lg:h-[500px] hero-3d-container">
           <ClientOnly fallback={
             <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
               <div className="text-neutral-500 text-sm">Loading 3D Room...</div>
             </div>
           }>
-            <Canvas camera={{ position: [3.5, 3, 3.5], fov: 58 }}>
+            <Canvas 
+              camera={{ position: [3.5, 3, 3.5], fov: 58 }}
+              gl={{ 
+                antialias: false, // Disable antialiasing on mobile for better performance
+                powerPreference: "low-power", // Use integrated GPU if available
+                precision: "lowp" // Use lower precision for mobile
+              }}
+              dpr={(() => {
+                if (typeof window === 'undefined') return 1;
+                return window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 2);
+              })()} // Limit pixel ratio on mobile
+            >
               <Suspense fallback={null}>
                 <ambientLight intensity={0.6} />
                 <hemisphereLight color="#ffffff" groundColor="#404040" intensity={0.5} />
@@ -82,7 +133,14 @@ export function HeroSection() {
                 <pointLight position={[-2, 2, -2]} intensity={0.2} />
                 <pointLight position={[0, 5, 0]} intensity={0.4} />
                 <Room />
-                <OrbitControls enablePan={false} enableZoom={false} autoRotate autoRotateSpeed={0.3} />
+                <OrbitControls 
+                  enablePan={false} 
+                  enableZoom={false} 
+                  autoRotate={isHeroVisible} 
+                  autoRotateSpeed={isHeroVisible ? 0.3 : 0}
+                  enableDamping={true}
+                  dampingFactor={0.05}
+                />
               </Suspense>
             </Canvas>
           </ClientOnly>
