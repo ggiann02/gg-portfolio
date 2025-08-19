@@ -44,7 +44,7 @@ export default function ImageCarousel({ images, projectTitle }: ImageCarouselPro
               src={images[currentIndex] || "/placeholder.svg"}
               alt={`${projectTitle} - Image ${currentIndex + 1}`}
               fill
-              className="object-cover cursor-pointer"
+              className="object-contain cursor-pointer"
               onClick={() => openModal(currentIndex)}
             />
 

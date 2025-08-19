@@ -23,41 +23,39 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <div className="min-h-screen bg-neutral-50">
-      {/* Back Navigation */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 font-ibm text-neutral-600 hover:text-black transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Projects
-        </Link>
-      </div>
-
       {/* Project Banner */}
       <div className="w-full pb-12">
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100">
-          <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" priority />
+        <div className="relative aspect-[21/9] w-full overflow-hidden bg-neutral-100">
+          <Image 
+            src={project.image || "/placeholder.svg"} 
+            alt={project.title} 
+            fill 
+            className="object-cover" 
+            priority 
+            sizes="100vw"
+          />
+          {/* Minimal gradient overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+          {/* Project title on bottom left */}
+          <div className="absolute bottom-0 left-0 p-6 md:p-8">
+            <h1 className="font-martian text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 drop-shadow-lg">
+              {project.title}
+            </h1>
+            <div className="flex items-center gap-4">
+              <span className="font-ibm text-sm text-white/90 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
+                {project.category}
+              </span>
+              <div className="flex items-center gap-1 font-ibm text-sm text-white/90">
+                <Calendar className="w-4 h-4" />
+                {project.year}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Project Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        {/* Project Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="font-ibm text-sm text-neutral-500 bg-neutral-100 px-3 py-1 rounded-full">
-              {project.category}
-            </span>
-            <div className="flex items-center gap-1 font-ibm text-sm text-neutral-500">
-              <Calendar className="w-4 h-4" />
-              {project.year}
-            </div>
-          </div>
-          <h1 className="font-martian text-4xl md:text-5xl font-bold text-black mb-6">{project.title}</h1>
-          <p className="font-ibm text-xl text-neutral-600 leading-relaxed">{project.description}</p>
-        </div>
-
                 {/* Read the book section for Birba project */}
         {project.id === 'birba-and-the-fly' && (
           <div className="mb-12">
@@ -66,14 +64,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               
               <div className="w-full -mx-4 px-4">
                 <ClientOnly fallback={
-                  <div className="w-full h-[800px] bg-neutral-100 rounded-lg flex items-center justify-center">
+                  <div className="w-full h-[800px] bg-neutral-100 flex items-center justify-center">
                     <div className="text-neutral-500 text-sm">Loading PDF...</div>
                   </div>
                 }>
                   <div className="space-y-4">
                     <iframe 
                       src="/BirbaAndTheFly.pdf"
-                      className="w-full h-[800px] border-0 rounded-lg shadow-lg"
+                      className="w-full h-[800px] border-0 shadow-lg"
                       title="Birba and the Fly - PDF Book"
                     />
                     <div className="text-center">
@@ -98,37 +96,119 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
         )}
 
-        {/* Project Video (if available) */}
-        {project.videoUrl && (
+        {/* Live Demo */}
+        {project.liveUrl && (
           <div className="mb-12">
-            <h2 className="font-martian text-2xl font-bold text-black mb-6">Project Demo</h2>
-            <div className="relative aspect-video w-full overflow-hidden bg-neutral-100">
-              {project.videoUrl.includes('drive.google.com') ? (
+            <h2 className="font-martian text-2xl font-bold text-black mb-6">Live Demo</h2>
+            <div className="space-y-4">
+              <div className="relative aspect-video w-full overflow-hidden bg-neutral-100">
                 <ClientOnly fallback={
-                  <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
-                    <div className="text-neutral-500 text-sm">Loading video...</div>
+                  <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
+                    <div className="text-neutral-500 text-sm">Loading demo...</div>
                   </div>
                 }>
                   <iframe
-                    src={project.videoUrl}
-                    className="w-full h-full"
-                    allow="autoplay; fullscreen"
+                    src={project.liveUrl}
+                    className="w-full h-full border-0"
+                    title={`${project.title} Live Demo`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    title={`${project.title} Demo`}
                   />
                 </ClientOnly>
-              ) : (
-                <ClientOnly fallback={
-                  <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
-                    <div className="text-neutral-500 text-sm">Loading video...</div>
-                  </div>
-                }>
-                  <video src={project.videoUrl} controls className="w-full h-full object-cover" poster={project.image}>
-                    Your browser does not support the video tag.
-                  </video>
-                </ClientOnly>
-              )}
+              </div>
+              <div className="text-center">
+                <a 
+                  href={project.liveUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-ibm text-sm"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15,3 21,3 21,9"/>
+                    <line x1="10" x2="21" y1="14" y2="3"/>
+                  </svg>
+                  Open in New Tab
+                </a>
+              </div>
             </div>
+          </div>
+        )}
+
+        {/* Project Video(s) */}
+        {(project.videoUrl || (project.videoUrls && project.videoUrls.length > 0)) && (
+          <div className="mb-12">
+            <h2 className="font-martian text-2xl font-bold text-black mb-6">
+              {project.videoUrls && project.videoUrls.length > 1 ? "Project Videos" : "Project Demo"}
+            </h2>
+            
+            {/* Multiple videos */}
+            {project.videoUrls && project.videoUrls.length > 0 ? (
+              <div className="space-y-8">
+                {project.videoUrls.map((videoUrl, index) => (
+                  <div key={index}>
+                    <div className="relative aspect-video w-full overflow-hidden bg-neutral-100">
+                      {videoUrl.includes('drive.google.com') ? (
+                        <ClientOnly fallback={
+                          <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
+                            <div className="text-neutral-500 text-sm">Loading video...</div>
+                          </div>
+                        }>
+                          <iframe
+                            src={videoUrl}
+                            className="w-full h-full"
+                            frameBorder="0"
+                            allowFullScreen
+                            title={`${project.title} Demo ${index + 1}`}
+                          />
+                        </ClientOnly>
+                      ) : (
+                        <ClientOnly fallback={
+                          <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
+                            <div className="text-neutral-500 text-sm">Loading video...</div>
+                          </div>
+                        }>
+                          <video src={videoUrl} controls className="w-full h-full object-cover" poster={project.image}>
+                            Your browser does not support the video tag.
+                          </video>
+                        </ClientOnly>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Single video fallback */
+              project.videoUrl && (
+                <div className="relative aspect-video w-full overflow-hidden bg-neutral-100">
+                  {project.videoUrl.includes('drive.google.com') ? (
+                    <ClientOnly fallback={
+                      <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
+                        <div className="text-neutral-500 text-sm">Loading video...</div>
+                      </div>
+                    }>
+                      <iframe
+                        src={project.videoUrl}
+                        className="w-full h-full"
+                        frameBorder="0"
+                        allowFullScreen
+                        title={`${project.title} Demo`}
+                      />
+                    </ClientOnly>
+                  ) : (
+                    <ClientOnly fallback={
+                      <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
+                        <div className="text-neutral-500 text-sm">Loading video...</div>
+                      </div>
+                    }>
+                      <video src={project.videoUrl} controls className="w-full h-full object-cover" poster={project.image}>
+                        Your browser does not support the video tag.
+                      </video>
+                    </ClientOnly>
+                  )}
+                </div>
+              )
+            )}
           </div>
         )}
 
@@ -160,7 +240,18 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Image Carousel */}
         {project.galleryImages && project.galleryImages.length > 0 && (
-          <ImageCarousel images={project.galleryImages} projectTitle={project.title} />
+          <ClientOnly fallback={
+            <div className="mb-12">
+              <h2 className="font-martian text-2xl font-bold text-black mb-6">Project Gallery</h2>
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 mb-4">
+                <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
+                  <div className="text-neutral-500 text-sm">Loading gallery...</div>
+                </div>
+              </div>
+            </div>
+          }>
+            <ImageCarousel images={project.galleryImages} projectTitle={project.title} />
+          </ClientOnly>
         )}
 
         {/* Project Navigation */}

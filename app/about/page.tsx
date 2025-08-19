@@ -15,7 +15,7 @@ export default function AboutPage() {
           <div className="order-2 lg:order-1">
             <div className="aspect-square relative overflow-hidden bg-neutral-200">
               <Image
-                src="/placeholder.svg?height=500&width=500"
+                src="/images/ProfilePic.JPG"
                 alt="Giorgia Giannico"
                 fill
                 className="object-cover"
@@ -44,15 +44,8 @@ export default function AboutPage() {
                 </p>
 
                 <p>
-                  With experience as a Frontend Developer at Goodpath and previous roles in UI/UX development, I bring
-                  both technical expertise and creative vision to every project. I believe in the power of thoughtful
-                  design to solve complex problems and create engaging user experiences.
-                </p>
-
-                <p>
-                  When I'm not coding or creating, you can find me exploring new technologies, experimenting with 3D
-                  modeling, or working on interdisciplinary art projects that challenge conventional boundaries between
-                  digital and physical media.
+                  When I'm not coding or creating, you can find me exploring bookstores and coffee shops, riding horses,
+                  picking up a new hobby, traveling, or spending time with my family and friends.
                 </p>
               </div>
             </div>
