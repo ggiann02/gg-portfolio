@@ -7,54 +7,18 @@ import { Suspense, useEffect, useState } from "react"
 import Link from "next/link"
 import { ClientOnly } from "./client-only"
 
-function Room() {
+function Room({ rotation, zoom }: { rotation: number, zoom: number }) {
   const { scene } = useGLTF("/gioRoomLight.glb")
-  const [scale, setScale] = useState(1.5)
-  const [isVisible, setIsVisible] = useState(true)
-
-  useEffect(() => {
-    const updateScale = () => {
-      if (typeof window === 'undefined') return
-      
-      if (window.innerWidth < 640) {
-        setScale(1.9)
-      } else if (window.innerWidth < 1024) {
-        setScale(1.1)
-      } else {
-        setScale(1.5)
-      }
-    }
-
-    // Create intersection observer to pause rendering when not visible
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-      },
-      { threshold: 0.1, rootMargin: '100px' }
-    )
-
-    const heroSection = document.querySelector('.hero-3d-container')
-    if (heroSection) {
-      observer.observe(heroSection)
-    }
-
-    updateScale()
-    window.addEventListener("resize", updateScale)
-    
-    return () => {
-      window.removeEventListener("resize", updateScale)
-      observer.disconnect()
-    }
-  }, [])
-
-  // Don't render the 3D model if not visible to save resources
-  if (!isVisible) return null
-
-  return <primitive object={scene} scale={scale} position={[0, -0.5, 0]} rotation={[0, Math.PI / 9, 0]} />
+  // Use a smaller scale on mobile devices
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const scale = isMobile ? zoom * 0.35 : zoom * 0.5;
+  return <primitive object={scene} scale={scale} position={[0, -0.5, 0]} rotation={[0, rotation, 0]} />
 }
 
 export function HeroSection() {
   const [isHeroVisible, setIsHeroVisible] = useState(true)
+  const [rotation, setRotation] = useState(Math.PI / 9)
+  const [zoom, setZoom] = useState(1.5)
 
   const scrollToNextSection = () => {
     const nextSection = document.querySelector("#featured-work")
@@ -105,23 +69,24 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="w-full lg:flex-1 max-w-2xl h-[600px] sm:h-96 md:h-96 lg:h-[500px] hero-3d-container">
+        <div className="w-full lg:flex-1 max-w-2xl h-[600px] sm:h-96 md:h-96 lg:h-[500px] hero-3d-container pointer-events-none md:pointer-events-auto relative">
           <ClientOnly fallback={
             <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
               <div className="text-neutral-500 text-sm">Loading 3D Room...</div>
             </div>
           }>
+            {/* All browser-dependent logic inside ClientOnly */}
             <Canvas 
-              camera={{ position: [3.5, 3, 3.5], fov: 58 }}
+              camera={{ position: [3.5, 3, 3.5], fov: 58, zoom }}
               gl={{ 
-                antialias: false, // Disable antialiasing on mobile for better performance
-                powerPreference: "low-power", // Use integrated GPU if available
-                precision: "lowp" // Use lower precision for mobile
+                antialias: false,
+                powerPreference: "low-power",
+                precision: "lowp"
               }}
               dpr={(() => {
                 if (typeof window === 'undefined') return 1;
                 return window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 2);
-              })()} // Limit pixel ratio on mobile
+              })()}
             >
               <Suspense fallback={null}>
                 <ambientLight intensity={0.6} />
@@ -132,7 +97,7 @@ export function HeroSection() {
                 <pointLight position={[2, 3, 2]} intensity={0.3} />
                 <pointLight position={[-2, 2, -2]} intensity={0.2} />
                 <pointLight position={[0, 5, 0]} intensity={0.4} />
-                <Room />
+                <Room rotation={rotation} zoom={zoom} />
                 <OrbitControls 
                   enablePan={false} 
                   enableZoom={false} 
@@ -140,9 +105,44 @@ export function HeroSection() {
                   autoRotateSpeed={isHeroVisible ? 0.3 : 0}
                   enableDamping={true}
                   dampingFactor={0.05}
+                  minDistance={1}
+                  maxDistance={3}
+                  minPolarAngle={0}
+                  maxPolarAngle={Math.PI}
                 />
               </Suspense>
             </Canvas>
+            {/* Mobile controls */}
+            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-4 md:hidden z-10">
+              <button
+                aria-label="Rotate Left"
+                className="bg-black text-white rounded-full p-2 shadow"
+                onClick={() => setRotation((r) => r - Math.PI / 16)}
+              >
+                &#8592;
+              </button>
+              <button
+                aria-label="Zoom Out"
+                className="bg-black text-white rounded-full p-2 shadow"
+                onClick={() => setZoom((z) => Math.max(1, z - 0.1))}
+              >
+                -
+              </button>
+              <button
+                aria-label="Zoom In"
+                className="bg-black text-white rounded-full p-2 shadow"
+                onClick={() => setZoom((z) => Math.min(2.5, z + 0.1))}
+              >
+                +
+              </button>
+              <button
+                aria-label="Rotate Right"
+                className="bg-black text-white rounded-full p-2 shadow"
+                onClick={() => setRotation((r) => r + Math.PI / 16)}
+              >
+                &#8594;
+              </button>
+            </div>
           </ClientOnly>
         </div>
       </div>

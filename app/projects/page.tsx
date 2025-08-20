@@ -12,6 +12,7 @@ export default function ProjectsPage() {
 
   const filteredProjects = getProjectsByCategory(activeCategory)
 
+
   return (
     <main className="px-6 py-16 md:px-12 md:py-24">
       <div className="text-center mb-16">
@@ -53,7 +54,6 @@ export default function ProjectsPage() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-
             <div className="space-y-3">
               <h3
                 className="text-xl font-bold group-hover:text-gray-600 transition-colors"
@@ -61,7 +61,6 @@ export default function ProjectsPage() {
               >
                 {project.title}
               </h3>
-
               <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: "var(--font-ibm-plex-sans)" }}>
                 {project.description}
               </p>
