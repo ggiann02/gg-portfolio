@@ -69,7 +69,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="w-full lg:flex-1 max-w-2xl h-[600px] sm:h-96 md:h-96 lg:h-[500px] hero-3d-container pointer-events-none md:pointer-events-auto relative">
+  <div className="w-full lg:flex-1 max-w-2xl h-[600px] sm:h-96 md:h-96 lg:h-[500px] hero-3d-container pointer-events-none md:pointer-events-auto">
           <ClientOnly fallback={
             <div className="w-full h-full bg-neutral-100 rounded-lg flex items-center justify-center">
               <div className="text-neutral-500 text-sm">Loading 3D Room...</div>
@@ -112,37 +112,6 @@ export function HeroSection() {
                 />
               </Suspense>
             </Canvas>
-            {/* Mobile controls */}
-            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-4 md:hidden z-10">
-              <button
-                aria-label="Rotate Left"
-                className="bg-black text-white rounded-full p-2 shadow"
-                onClick={() => setRotation((r) => r - Math.PI / 16)}
-              >
-                &#8592;
-              </button>
-              <button
-                aria-label="Zoom Out"
-                className="bg-black text-white rounded-full p-2 shadow"
-                onClick={() => setZoom((z) => Math.max(1, z - 0.1))}
-              >
-                -
-              </button>
-              <button
-                aria-label="Zoom In"
-                className="bg-black text-white rounded-full p-2 shadow"
-                onClick={() => setZoom((z) => Math.min(2.5, z + 0.1))}
-              >
-                +
-              </button>
-              <button
-                aria-label="Rotate Right"
-                className="bg-black text-white rounded-full p-2 shadow"
-                onClick={() => setRotation((r) => r + Math.PI / 16)}
-              >
-                &#8594;
-              </button>
-            </div>
           </ClientOnly>
         </div>
       </div>
