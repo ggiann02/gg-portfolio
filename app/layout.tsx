@@ -19,7 +19,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: "Giorgia Giannico - Portfolio",
-  description: "UI/UX Designer crafting beautiful and functional digital experiences",
+  description: "Designer crafting beautiful and functional digital experiences",
   generator: "v0.app",
   icons: {
     icon: "/images/logo-white.png",
