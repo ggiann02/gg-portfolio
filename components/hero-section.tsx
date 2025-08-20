@@ -87,6 +87,7 @@ export function HeroSection() {
                 if (typeof window === 'undefined') return 1;
                 return window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 2);
               })()}
+              className="pointer-events-none md:pointer-events-auto"
             >
               <Suspense fallback={null}>
                 <ambientLight intensity={0.6} />
