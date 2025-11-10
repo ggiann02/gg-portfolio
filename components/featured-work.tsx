@@ -76,9 +76,6 @@ export function FeaturedWork() {
         <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: "var(--font-martian-mono)" }}>
           Featured Work
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto" style={{ fontFamily: "var(--font-ibm-plex-sans)" }}>
-          A selection of projects that showcase my approach to solving complex design challenges
-        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

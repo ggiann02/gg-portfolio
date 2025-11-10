@@ -54,46 +54,48 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </div>
 
-      {/* Project Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        {/* Live Demo */}
-        {project.liveUrl && (
-          <div className="mb-12">
-            <h2 className="font-martian text-2xl font-bold text-black mb-6">Live Demo</h2>
-            <div className="space-y-4">
-              <div className="relative aspect-video w-full overflow-hidden bg-neutral-100">
-                <ClientOnly fallback={
-                  <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
-                    <div className="text-neutral-500 text-sm">Loading demo...</div>
-                  </div>
-                }>
-                  <iframe
-                    src={project.liveUrl}
-                    className="w-full h-full border-0"
-                    title={`${project.title} Live Demo`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </ClientOnly>
-              </div>
-              <div className="text-center">
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-ibm text-sm"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15,3 21,3 21,9"/>
-                    <line x1="10" x2="21" y1="14" y2="3"/>
-                  </svg>
-                  Open in New Tab
-                </a>
-              </div>
+      {/* Live Demo Wide Section */}
+      {project.liveUrl && (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <h2 className="font-martian text-2xl font-bold text-black mb-6">Live Demo</h2>
+          <div className="space-y-4">
+            <div className="relative aspect-video xl:aspect-[16/10] w-full overflow-hidden bg-neutral-100 shadow-sm">
+              <ClientOnly fallback={
+                <div className="w-full h-full bg-neutral-100 flex items-center justify-center">
+                  <div className="text-neutral-500 text-sm">Loading demo...</div>
+                </div>
+              }>
+                <iframe
+                  src={project.liveUrl}
+                  className="w-full h-full border-0"
+                  title={`${project.title} Live Demo`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ background: 'white' }}
+                />
+              </ClientOnly>
+            </div>
+            <div className="text-center">
+              <a 
+                href={project.liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-ibm text-sm"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" x2="21" y1="14" y2="3"/>
+                </svg>
+                Open in New Tab
+              </a>
             </div>
           </div>
-        )}
+        </div>
+      )}
+
+      {/* Project Content */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-6 pb-20">
 
         {/* Project Video(s) */}
         {(project.videoUrl || (project.videoUrls && project.videoUrls.length > 0)) && (
@@ -173,14 +175,16 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         )}
 
         {/* Project Description */}
-        <div className="mb-12">
-          <h2 className="font-martian text-2xl font-bold text-black mb-6">About This Project</h2>
-          <div className="font-ibm text-neutral-700 leading-relaxed space-y-4">
-            {project.longDescription.split("\n").map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+        {project.longDescription && (
+          <div className="mb-12">
+            <h2 className="font-martian text-2xl font-bold text-black mb-6">About This Project</h2>
+            <div className="font-ibm text-neutral-700 leading-relaxed space-y-4">
+              {project.longDescription.split("\n").map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Skills Used */}
         <div className="mb-12">

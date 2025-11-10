@@ -3,7 +3,7 @@ export interface Project {
   title: string
   category: string
   description: string
-  longDescription: string
+  longDescription?: string
   image: string
   galleryImages?: string[]
   videoUrl?: string
@@ -16,6 +16,50 @@ export interface Project {
 
 export const projectsData: Project[] = [
   // Web & UI/UX Projects
+  {
+    id: "goodpath-refresh",
+    title: "Goodpath Website Refresh",
+    category: "Web & UI/UX",
+    description: "A website redesign project for Goodpath",
+    longDescription:  "As an extension of my work with Goodpath, " + 
+    "I worked with the Marketing, Design and Development teams to refresh the Goodpath website. " +
+      "The project began with brainstorming sessions to outline a clear, refreshed brand identity " +
+      "and user experience goals. From there, I collaborated closely with designers to create wireframes and high-fidelity mockups " +
+      "that aligned with the new vision. After multiple iterations and feedback rounds, the Development team and I implemented the designs using React and Tailwind CSS, " +
+      "ensuring responsiveness and accessibility across devices. The end result was a modern, user-friendly website that effectively communicated Goodpath's mission and services. ",
+    image: "/images/goodpath/goodpath_images.webp",
+    galleryImages: [
+      "/images/goodpath/Refresh-1.png",
+      "/images/goodpath/Refresh-2.png",
+      "/images/goodpath/Refresh-3.png",
+    ],
+    liveUrl: "https://goodpath.com",
+    skills: ["React Native", "CSS Tailwind", "Figma"],
+    year: "2025",
+    status: "completed",
+  },
+  {
+    id: "fridge-magnets",
+    title: "I'm Sorry for the Fridge Magnets",
+    category: "Web & UI/UX",
+    description: "A web art project exploring the word 'sorry'",
+    image: "/images/FridgeMagnets.png",
+    liveUrl: "https://ggiann02.github.io/ImSorryForTheFridgeMagnets/",
+    skills: ["HTML", "CSS", "P5.js", "JavaScript"],
+    year: "2025",
+    status: "completed",
+  },
+  {
+    id: "shelf-of-time",
+    title: "A Shelf of Time",
+    category: "Web & UI/UX",
+    description: "A web design project focused on reading and time",
+    image: "/images/shelfOfBooks.png",
+    liveUrl: "https://ggiann02.github.io/aShelfOfTime/",
+    skills: ["Web", "Design", "HTML"],
+    year: "2025",
+    status: "completed",
+  },
   {
     id: "eat-the-metaballs",
     title: "Eat the Metaballs",
