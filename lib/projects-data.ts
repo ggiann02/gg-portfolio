@@ -127,6 +127,17 @@ export const projectsData: Project[] = [
 
   // 3D Projects
   {
+    id: "follow-the-light",
+    title: "Follow The Light",
+    category: "3D",
+    description: "A Unity2D game that challenges players to navigate through darkness using light.",
+    image: "/images/FollowTheLight.png",
+    liveUrl: "https://followthelightcs23.itch.io/follow-the-light",
+    skills: ["3D Modeling", "Environment Design", "Character Design", "Texture Mapping", "Game Development"],
+    year: "2024",
+    status: "completed",
+  },
+  {
     id: "montessori-trolley-problem",
     title: "Montessori Trolley Problem",
     category: "3D",
