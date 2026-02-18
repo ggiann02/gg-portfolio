@@ -22,7 +22,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 project-page">
       {/* Project Banner */}
       <div className="w-full pb-12">
         <div className="relative aspect-[21/9] w-full overflow-hidden bg-neutral-100">

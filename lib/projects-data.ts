@@ -9,6 +9,7 @@ export interface Project {
   videoUrl?: string
   videoUrls?: string[]
   liveUrl?: string
+  embedCode?: string
   skills: string[]
   year: string
   status: "completed" | "in-progress"
@@ -127,6 +128,27 @@ export const projectsData: Project[] = [
 
   // 3D Projects
   {
+    id: "radio-towers",
+    title: "Radio Towers",
+    category: "3D",
+    description: "A Unity2D game that challenges players to navigate through darkness using light.",
+    image: "/images/radioTowers/radio1.png",
+    galleryImages: [
+      "/images/radioTowers/radio1.png",
+      "/images/radioTowers/radio2.png",
+      "/images/radioTowers/radio3.png",
+      "/images/radioTowers/radio4.png",
+      "/images/radioTowers/radio5.png",
+      "/images/radioTowers/radio6.png",
+      "/images/radioTowers/radio7.png",
+    ],
+    liveUrl: "https://radiotowers23.itch.io/radio-towers",
+    embedCode: '<iframe src="https://itch.io/embed/3995907" width="552" height="167" frameborder="0"><a href="https://radiotowers23.itch.io/radio-towers">Radio Towers by RadioTowers23</a></iframe>',
+    skills: ["3D Modeling", "Environment Design", "Character Design", "Texture Mapping", "Game Development"],
+    year: "2026",
+    status: "completed",
+  },
+  {
     id: "follow-the-light",
     title: "Follow The Light",
     category: "3D",
@@ -134,7 +156,7 @@ export const projectsData: Project[] = [
     image: "/images/FollowTheLight.png",
     liveUrl: "https://followthelightcs23.itch.io/follow-the-light",
     skills: ["3D Modeling", "Environment Design", "Character Design", "Texture Mapping", "Game Development"],
-    year: "2024",
+    year: "2025",
     status: "completed",
   },
   {

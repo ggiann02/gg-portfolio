@@ -10,7 +10,12 @@ import { ClientOnly } from "./client-only"
 function Room({ rotation, zoom }: { rotation: number, zoom: number }) {
   const { scene } = useGLTF("/gioRoomLight.glb")
   // Use a smaller scale on mobile devices
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
+  
   const scale = isMobile ? zoom * 0.35 : zoom * 0.5;
   return <primitive object={scene} scale={scale} position={[0, -0.5, 0]} rotation={[0, rotation, 0]} />
 }
@@ -45,7 +50,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="px-6 py-16 md:px-12 md:py-24 hero-section">
+    <section className="px-6 py-16 md:px-24 md:py-24 hero-section">
       <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-16">
         <div className="flex-1 space-y-8 text-center lg:text-left">
           <h1
@@ -60,7 +65,7 @@ export function HeroSection() {
           <div className="flex justify-center lg:justify-start">
             <Link href="/projects">
               <Button
-                className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-sm font-medium"
+                className="bg-accent-pink text-dark-purple hover:bg-dark-purple hover:text-white px-8 py-6 text-sm font-medium"
                 style={{ fontFamily: "var(--font-ibm-plex-sans)" }}
               >
                 VIEW MY WORK

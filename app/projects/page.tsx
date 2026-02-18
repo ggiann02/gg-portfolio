@@ -47,7 +47,7 @@ export default function ProjectsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {filteredProjects.map((project) => (
           <Link key={project.id} href={`/projects/${project.id}`} className="group cursor-pointer">
-            <div className="aspect-square overflow-hidden mb-6 bg-stone-100">
+            <div className="aspect-video overflow-hidden mb-6 bg-stone-100">
               <img
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}

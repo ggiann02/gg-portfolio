@@ -22,14 +22,12 @@ export function Header() {
     <header className="relative">
       <div className="flex items-center justify-between px-6 py-8 md:px-12">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-0.5 bg-black"></div>
           <Link href="/" onClick={closeMenu}>
-            <h1
+            <h3
               className="text-2xl font-bold cursor-pointer hover:opacity-80 transition-opacity"
-              style={{ fontFamily: "var(--font-martian-mono)" }}
             >
-              GG
-            </h1>
+              Giorgia Giannico
+            </h3>
           </Link>
         </div>
 
