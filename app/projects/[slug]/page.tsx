@@ -12,13 +12,14 @@ interface ProjectPageProps {
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectBySlug(params.slug)
-  const nextProject = getNextProject(params.slug)
-  const previousProject = getPreviousProject(params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  const nextProject = getNextProject(slug);
+  const previousProject = getPreviousProject(slug);
 
   if (!project) {
-    notFound()
+    notFound();
   }
 
   return (
