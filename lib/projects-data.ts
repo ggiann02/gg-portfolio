@@ -18,6 +18,27 @@ export interface Project {
 export const projectsData: Project[] = [
   // Web & UI/UX Projects
   {
+    id: "portfolio-website",
+    title: "This Website",
+    category: "Web & UI/UX",
+    description: "A personal portfolio website to showcase my projects and skills",
+    longDescription:  "This website is a personal project to showcase my work and skills in web development and design. " +
+      "I designed and developed the site using Next.js and Tailwind CSS, focusing on creating a clean, modern, and responsive user experience. " +
+      "The project involved selecting a cohesive color scheme, designing custom components, and ensuring accessibility across all devices. " +
+      "I also implemented dynamic routing and server-side rendering to enhance performance and SEO. " +
+      "The end result is a professional portfolio that effectively highlights my projects and capabilities.",
+    image: "/images/portfolio.png",
+    // galleryImages: [
+    //   "/images/portfolio/Preview-1.png",
+    //   "/images/portfolio/Preview-2.png",
+    //   "/images/portfolio/Preview-3.png",
+    // ],
+    embedCode: '<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/LrfFx4QCmba5Qvg1kykyI8/GG-Portfolio?page-id=0%3A1&node-id=1-105&p=f&viewport=104%2C391%2C0.12&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A105&embed-host=share" allowfullscreen></iframe>',
+    skills: ["Next.js", "Tailwind CSS", "Figma"],
+    year: "2025",
+    status: "completed",
+  },
+  {
     id: "goodpath-refresh",
     title: "Goodpath Website Refresh",
     category: "Web & UI/UX",
