@@ -28,7 +28,7 @@ export const projectsData: Project[] = [
       "and user experience goals. From there, I collaborated closely with designers to create wireframes and high-fidelity mockups " +
       "that aligned with the new vision. After multiple iterations and feedback rounds, the Development team and I implemented the designs using React and Tailwind CSS, " +
       "ensuring responsiveness and accessibility across devices. The end result was a modern, user-friendly website that effectively communicated Goodpath's mission and services. ",
-    image: "/images/goodpath/goodpath_images.webp",
+    image: "/images/goodpath/MobilePhones.png",
     galleryImages: [
       "/images/goodpath/Refresh-1.png",
       "/images/goodpath/Refresh-2.png",
@@ -143,7 +143,7 @@ export const projectsData: Project[] = [
       "/images/radioTowers/radio7.png",
     ],
     liveUrl: "https://radiotowers23.itch.io/radio-towers",
-    embedCode: '<iframe src="https://itch.io/embed/3995907" width="552" height="167" frameborder="0"><a href="https://radiotowers23.itch.io/radio-towers">Radio Towers by RadioTowers23</a></iframe>',
+    embedCode: '<iframe frameborder="0" src="https://itch.io/embed/3995907?linkback=true&amp;border_width=0&amp;bg_color=223c49&amp;fg_color=ffffff&amp;link_color=b86f50&amp;border_color=223c49" width="550" height="165"><a href="https://radiotowers23.itch.io/radio-towers">Radio Towers by RadioTowers23</a></iframe>',
     skills: ["3D Modeling", "Environment Design", "Character Design", "Texture Mapping", "Game Development"],
     year: "2026",
     status: "completed",

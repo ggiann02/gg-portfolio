@@ -80,36 +80,33 @@ export default function FeaturedWork() {
               ]}
               speed={400}
               easing="linear"
-              style={{ width: "100%", display: "flex", justifyContent: "center", gap: "60px" }}
             >
               {featuredProjects.map((project) => (
                 <div key={project.id} className="flex-shrink-0" style={{ width: 450, paddingRight: "30px" }}>
                   <Link
-                    href={project.liveUrl || `/projects/${project.id}`}
-                    target={project.liveUrl ? "_blank" : undefined}
-                    rel={project.liveUrl ? "noopener noreferrer" : undefined}
+                    href={`/projects/${project.id}`}
                     className="relative group block overflow-hidden"
                   >
-                    <div className="relative h-80 w-full overflow-hidden bg-gray-200">
+                    <div className="relative h-64 w-full overflow-hidden">
                       {project.image && (
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       )}
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-ibm-plex-sans)" }}>
-                          {project.title}
-                        </h3>
-                        <p className="text-sm text-gray-200 line-clamp-2 mb-3">
-                          {project.description}
-                        </p>
-                        <span className="text-sm font-semibold text-white hover:text-gray-200 transition-colors">
-                          View Project →
-                        </span>
-                      </div>
+                    </div>
+                    {/* Title and Description always visible below image */}
+                    <div className="px-0 pt-0">
+                      <h3 className="text-xl font-bold text-black mb-1 mt-5" style={{ fontFamily: "var(--font-ibm-plex-sans)" }}>
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-700 mb-2">
+                        {project.description}
+                      </p>
+                      <span className="text-sm font-semibold text-black hover:text-gray-600 transition-colors">
+                        View Project →
+                      </span>
                     </div>
                   </Link>
                 </div>

@@ -24,39 +24,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <div className="min-h-screen bg-neutral-50 project-page">
-      {/* Project Banner */}
+      {/* Project Banner (no image) */}
       <div className="w-full pb-12">
-        <div className="relative aspect-[21/9] w-full overflow-hidden bg-neutral-100">
-          <Image 
-            src={project.image || "/placeholder.svg"} 
-            alt={project.title} 
-            fill 
-            className="object-cover" 
-            priority 
-            sizes="100vw"
-          />
-          {/* Minimal gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-          {/* Project title on bottom left */}
-          <div className="absolute bottom-0 left-0 p-6 md:p-8">
-            <h1 className="font-martian text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 drop-shadow-lg">
-              {project.title}
-            </h1>
-            <div className="flex items-center gap-4">
-              <span className="font-ibm text-sm text-white/90 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
-                {project.category}
-              </span>
-              <div className="flex items-center gap-1 font-ibm text-sm text-white/90">
-                <Calendar className="w-4 h-4" />
-                {project.year}
-              </div>
+        <div className="px-6 md:px-8 pt-10">
+          <h1 className="font-martian text-3xl md:text-5xl lg:text-6xl font-bold mb-2">
+            {project.title}
+          </h1>
+          <div className="flex items-center gap-4">
+            <span className="font-ibm text-sm text-black/90 bg-black/5 px-3 py-1 rounded-full">
+              {project.category}
+            </span>
+            <div className="flex items-center gap-1 font-ibm text-sm text-black/90">
+              <Calendar className="w-4 h-4" />
+              {project.year}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Live Demo Wide Section */}
-      {project.liveUrl && (
+      {/* If embedCode exists, show only the embed (for games) */}
+      {project.embedCode ? (
+        <div className="flex justify-center items-center w-full my-12">
+          <div dangerouslySetInnerHTML={{ __html: project.embedCode }} />
+        </div>
+      ) : project.liveUrl ? (
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <h2 className="font-martian text-2xl font-bold text-black mb-6">Live Demo</h2>
           <div className="space-y-4">
@@ -93,7 +84,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
 
       {/* Project Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-6 pb-20">

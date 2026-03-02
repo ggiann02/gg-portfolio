@@ -182,8 +182,3 @@ h3 {
   font-weight: 400;
 }
 
-/* Override h1 color to white for project pages */
-#projects-section h1,
-.project-page h1 {
-  color: white;
-}
