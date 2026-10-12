@@ -18,6 +18,23 @@ export interface Project {
 export const projectsData: Project[] = [
   // Web & UI/UX Projects
   {
+    id: "orchestrator",
+    title: "Orchestrator",
+    category: "Web & UI/UX",
+    description: "Boosha AI's AI-powered investment platform matching client needs with market trends.",
+    longDescription:
+      "Designed and shipped the UI for Orchestrator, Boosha AI's AI-powered platform matching client investment needs with market trends — taking the product from early Figma concepts to a polished, production interface.\n\nRefined interaction and visual detail across core user flows, translating fintech requirements into clearer, more intuitive experiences for financial advisors and clients.\n\nWorked directly with founders to shape product and design decisions end to end, taking ownership of UI quality and polish as the team's sole designer-developer.",
+    image: "/images/orchestrator/Orchestrator_Homepage.png",
+    galleryImages: [
+      "/images/orchestrator/Orchestrator_Homepage.png",
+      "/images/orchestrator/Orchestrator_New.png",
+      "/images/orchestrator/Orchestrator_orchestrations.png",
+    ],
+    skills: ["Product Design", "UI Design", "UX Design", "Fintech", "Figma", "Design Systems"],
+    year: "2024",
+    status: "completed",
+  },
+  {
     id: "portfolio-website",
     title: "This Website",
     category: "Web & UI/UX",
@@ -152,7 +169,11 @@ export const projectsData: Project[] = [
     id: "radio-towers",
     title: "Radio Towers",
     category: "3D",
-    description: "A Unity2D game that challenges players to navigate through darkness using light.",
+    description: "A Unity2D game about a child stranded after a hurricane.",
+    longDescription: "Radio Towers is 2D game developed in Unity that centers on interacting with radio towers" + 
+    "within a dynamic environment. Built using C# and Unity’s 2D toolset, the project focuses on system-driven" +
+    "gameplay where player actions influence how the space behaves. Through experimentation and movement, players" +
+    "engage with the game’s mechanics directly, making it a study in interactive systems, spatial design, and iterative game development.",
     image: "/images/radioTowers/radio1.png",
     galleryImages: [
       "/images/radioTowers/radio1.png",

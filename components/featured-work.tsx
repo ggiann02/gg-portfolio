@@ -12,10 +12,11 @@ export default function FeaturedWork() {
 
   // Define featured project IDs
   const featuredIds = [
+    "orchestrator",
+    "portfolio-website",
     "goodpath-refresh",
     "eat-the-metaballs",
-    "birba-and-the-fly",
-    "fridge-magnets"
+    "radio-towers",
   ];
   const featuredProjects = projectsData.filter(p => featuredIds.includes(p.id));
 

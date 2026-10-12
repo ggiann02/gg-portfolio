@@ -8,8 +8,8 @@ export default function ResumePage() {
       {/* Header */}
       <div className="flex justify-end px-6 py-4 md:px-12 border-b">
         <a
-          href="/Giorgia-Giannico-resume2025.pdf"
-          download="Giorgia-Giannico-resume2025.pdf"
+          href="/Giorgia_Giannico_CV_2026.pdf"
+          download="Giorgia_Giannico_CV_2026.pdf.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -26,7 +26,7 @@ export default function ResumePage() {
       {/* PDF Viewer */}
       <div className="max-w-4xl mx-auto px-6 py-8 h-[calc(100vh-140px)]">
         <iframe
-          src="/Giorgia-Giannico-resume2025.pdf"
+          src="/Giorgia_Giannico_CV_2026.pdf"
           className="w-full h-full border-0 shadow-sm"
           title="Giorgia Giannico Resume"
         />
