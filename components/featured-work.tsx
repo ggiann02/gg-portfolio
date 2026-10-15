@@ -43,7 +43,7 @@ export default function FeaturedWork() {
         <p className="text-lg text-gray-600">A selection of my favorite projects</p>
       </div>
 
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-6 sm:px-0">
         {isMounted && (
           <div>
             <ReactSimplyCarousel
@@ -83,7 +83,10 @@ export default function FeaturedWork() {
               easing="linear"
             >
               {featuredProjects.map((project) => (
-                <div key={project.id} className="flex-shrink-0" style={{ width: 450, paddingRight: "30px" }}>
+                <div
+                  key={project.id}
+                  className="w-[calc(100vw-3rem)] flex-shrink-0 sm:w-[450px] sm:pr-[30px]"
+                >
                   <Link
                     href={`/projects/${project.id}`}
                     className="relative group block overflow-hidden"
