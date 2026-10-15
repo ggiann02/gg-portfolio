@@ -88,12 +88,12 @@ export default function FeaturedWork() {
                     href={`/projects/${project.id}`}
                     className="relative group block overflow-hidden"
                   >
-                    <div className="relative h-64 w-full overflow-hidden">
+                    <div className="relative h-72 w-full overflow-hidden rounded-lg">
                       {project.image && (
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       )}
                     </div>

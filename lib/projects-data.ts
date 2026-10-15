@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
     description: "Boosha AI's AI-powered investment platform matching client needs with market trends.",
     longDescription:
       "Designed and shipped the UI for Orchestrator, Boosha AI's AI-powered platform matching client investment needs with market trends — taking the product from early Figma concepts to a polished, production interface.\n\nRefined interaction and visual detail across core user flows, translating fintech requirements into clearer, more intuitive experiences for financial advisors and clients.\n\nWorked directly with founders to shape product and design decisions end to end, taking ownership of UI quality and polish as the team's sole designer-developer.",
-    image: "/images/orchestrator/Orchestrator_Homepage.png",
+    image: "/images/orchestrator/Orchestrator.png",
     galleryImages: [
       "/images/orchestrator/Orchestrator_Homepage.png",
       "/images/orchestrator/Orchestrator_New.png",
@@ -66,7 +66,7 @@ export const projectsData: Project[] = [
       "and user experience goals. From there, I collaborated closely with designers to create wireframes and high-fidelity mockups " +
       "that aligned with the new vision. After multiple iterations and feedback rounds, the Development team and I implemented the designs using React and Tailwind CSS, " +
       "ensuring responsiveness and accessibility across devices. The end result was a modern, user-friendly website that effectively communicated Goodpath's mission and services. ",
-    image: "/images/goodpath/MobilePhones.png",
+    image: "/images/goodpath/Goodpath.png",
     galleryImages: [
       "/images/goodpath/Refresh-1.png",
       "/images/goodpath/Refresh-2.png",
