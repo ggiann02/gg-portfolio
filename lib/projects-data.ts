@@ -24,11 +24,11 @@ export const projectsData: Project[] = [
     description: "Boosha AI's AI-powered investment platform matching client needs with market trends.",
     longDescription:
       "Designed and shipped the UI for Orchestrator, Boosha AI's AI-powered platform matching client investment needs with market trends — taking the product from early Figma concepts to a polished, production interface.\n\nRefined interaction and visual detail across core user flows, translating fintech requirements into clearer, more intuitive experiences for financial advisors and clients.\n\nWorked directly with founders to shape product and design decisions end to end, taking ownership of UI quality and polish as the team's sole designer-developer.",
-    image: "/images/orchestrator/Orchestrator.png",
+    image: "/images/Orchestrator/Orchestrator.png",
     galleryImages: [
-      "/images/orchestrator/Orchestrator_Homepage.png",
-      "/images/orchestrator/Orchestrator_New.png",
-      "/images/orchestrator/Orchestrator_orchestrations.png",
+      "/images/Orchestrator/Orchestrator_Homepage.png",
+      "/images/Orchestrator/Orchestrator_New.png",
+      "/images/Orchestrator/Orchestrator_orchestrations.png",
     ],
     skills: ["Product Design", "UI Design", "UX Design", "Fintech", "Figma", "Design Systems"],
     year: "2024",
