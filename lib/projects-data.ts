@@ -44,7 +44,7 @@ export const projectsData: Project[] = [
       "The project involved selecting a cohesive color scheme, designing custom components, and ensuring accessibility across all devices. " +
       "I also implemented dynamic routing and server-side rendering to enhance performance and SEO. " +
       "The end result is a professional portfolio that effectively highlights my projects and capabilities.",
-    image: "/images/portfolio.png",
+    image: "/images/Portfolio/Portfolio.png",
     // galleryImages: [
     //   "/images/portfolio/Preview-1.png",
     //   "/images/portfolio/Preview-2.png",

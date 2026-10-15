@@ -15,7 +15,6 @@ export default function FeaturedWork() {
     "orchestrator",
     "portfolio-website",
     "goodpath-refresh",
-    "eat-the-metaballs",
     "radio-towers",
   ];
   const featuredProjects = projectsData.filter(p => featuredIds.includes(p.id));
